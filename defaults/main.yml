@@ -1,0 +1,11 @@
+---
+# defaults file for s3fs
+s3fs:
+  access_key:
+  secret_key:
+  passwd_file: /etc/s3fs-passwd
+  buckets:
+    biorefdata:
+      mountpoint: /cvmfs/data.galaxyproject.org
+      prefix: /galaxy/v1/data.galaxyproject.org
+      options: "allow_other,use_cache=/tmp,max_stat_cache_size=100000,uid=33,gid=33,umask=002,url=https://s3.ap-southeast-2.amazonaws.com,endpoint=ap-southeast-2,public_bucket=1,enable_noobj_cache,no_check_certificate,kernel_cache,ensure_diskfree=10000"

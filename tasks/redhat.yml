@@ -1,0 +1,6 @@
+- name: Install s3fs
+  yum:
+    name: s3fs-fuse
+    state: present
+    enablerepo: epel
+  become: yes
