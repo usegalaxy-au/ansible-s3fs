@@ -3,7 +3,7 @@
 s3fs:
   access_key:
   secret_key:
-  passwd_file: /etc/s3fs-passwd
+  passwd_file: /etc/passwd-s3fs
   buckets:
     biorefdata:
       mountpoint: /cvmfs/data.galaxyproject.org

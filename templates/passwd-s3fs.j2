@@ -1,0 +1,3 @@
+{% for (bucket_name, bucket) in s3fs.buckets.items() %}
+{{ bucket_name }}:{{ bucket.get('access_key', s3fs.access_key) }}:{{ bucket.get('secret_key', s3fs.secret_key) }}
+{% endfor %}

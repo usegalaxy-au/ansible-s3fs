@@ -3,21 +3,23 @@
     path: "{{ item.value.mountpoint }}"
     state: directory
   loop: "{{ s3fs.buckets | dict2items }}"
+  become: yes
 
 - name: Make sure the access keys of buckets are present
   template:
-    src: s3fs-passwd.j2
+    src: passwd-s3fs.j2
     dest: "{{ s3fs.passwd_file }}"
     mode: 0600
     owner: "{{ ansible_user_id }}"
-  notify: restart s3fs
+  become: yes
 
 - name: Make sure mountpoints are present in fstab
   mount:
     name: "{{ item.value.mountpoint }}"
-    src: "s3fs#{{ key }}:{{ item.value.prefix | default('/') }}"
+    src: "s3fs#{{ item.key }}:{{ item.value.prefix | default('/') }}"
     fstype: fuse
     opts: "_netdev,{{ item.value.options }},passwd_file={{ s3fs.passwd_file }}"
     state: mounted
   loop: "{{ s3fs.buckets | dict2items }}"
   when: s3fs.buckets is defined
+  become: yes
