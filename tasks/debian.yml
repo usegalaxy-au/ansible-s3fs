@@ -1,0 +1,5 @@
+- name: Install s3fs
+  package:
+    name: s3fs
+    state: present
+  become: yes

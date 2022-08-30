@@ -1,0 +1,26 @@
+galaxy_info:
+  author: The Galaxy Project
+  description: Install s3fs and mount a given list of buckets
+  company: The Galaxy Project
+  issue_tracker_url: https://github.com/usegalaxy-au/ansible-s3fs/issues
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  platforms:
+  - name: Fedora
+    versions:
+      - all
+  - name: Debian
+    versions:
+      - all
+  - name: Ubuntu
+    versions:
+      - all
+
+  galaxy_tags:
+    - s3fs
+    - s3
+    - cloud
+
+dependencies: []
