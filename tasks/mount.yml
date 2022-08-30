@@ -2,6 +2,7 @@
   file:
     path: "{{ item.value.mountpoint }}"
     state: directory
+  when: item.value
   loop: "{{ s3fs.buckets | dict2items }}"
   become: yes
 
@@ -21,5 +22,5 @@
     opts: "_netdev,{{ item.value.options }},passwd_file={{ s3fs.passwd_file }}"
     state: mounted
   loop: "{{ s3fs.buckets | dict2items }}"
-  when: s3fs.buckets is defined
+  when: s3fs.buckets is defined and item.value is defined
   become: yes
